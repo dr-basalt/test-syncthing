@@ -390,32 +390,32 @@ services:
       retries: 3
 
   # TURN server pour fallback
-  coturn:
-    image: coturn/coturn:latest
-    container_name: netbird-coturn
-    restart: unless-stopped
-    ports:
-      - "3478:3478/udp"
-      - "49152-65535:49152-65535/udp"
-    environment:
-      - TURN_USERNAME=netbird
-      - TURN_PASSWORD=$RELAY_SECRET
-    command: >
-      -n
-      --log-file=stdout
-      --lt-cred-mech
-      --fingerprint
-      --no-multicast-peers
-      --no-cli
-      --no-tlsv1
-      --no-tlsv1_1
-      --realm=$FQDN_NODE
-      --server-name=$FQDN_NODE
-      --listening-port=3478
-      --min-port=49152
-      --max-port=65535
-      --user=netbird:$RELAY_SECRET
-      --external-ip=$IP
+#  coturn:
+#    image: coturn/coturn:latest
+#    container_name: netbird-coturn
+#    restart: unless-stopped
+#    ports:
+#      - "3478:3478/udp"
+#      - "49152-65535:49152-65535/udp"
+#    environment:
+#      - TURN_USERNAME=netbird
+#      - TURN_PASSWORD=$RELAY_SECRET
+#    command: >
+#      -n
+#      --log-file=stdout
+#      --lt-cred-mech
+#      --fingerprint
+#      --no-multicast-peers
+#      --no-cli
+#      --no-tlsv1
+#      --no-tlsv1_1
+#      --realm=$FQDN_NODE
+#      --server-name=$FQDN_NODE
+#      --listening-port=3478
+#      --min-port=49152
+#      --max-port=65535
+#      --user=netbird:$RELAY_SECRET
+#      --external-ip=$IP
 
   # === SYNCTHING SERVICE ===
   syncthing:
